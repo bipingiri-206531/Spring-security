@@ -19,28 +19,27 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http){
-
-        return http.csrf(c -> c.disable())
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+        return http.csrf(c-> c.disable())
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/public/**").permitAll()
-                        .requestMatchers("/users/**").permitAll()
-                        .requestMatchers("/normal/**").hasRole("NORMAL")
-                        .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/authority/read/**").hasAuthority("READ")
-                        .requestMatchers("/authority/write/**").hasAuthority("WRITE")
-                        .anyRequest().authenticated())
+                                .requestMatchers("/himal/**").permitAll()
+                                .requestMatchers("/users/**").permitAll()
+                                .requestMatchers("/dipak/**").hasRole("DIPAK")
+                                .requestMatchers("/sitaram/**").hasRole("SITARAM")
+                                .requestMatchers("/bipin/read**").hasAuthority("read")
+                                .requestMatchers("/bipin/write**").hasAuthority("write")
+                                .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(Customizer.withDefaults())
                 .build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) {
-        return configuration.getAuthenticationManager();
-
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) {
+        return authenticationConfiguration.getAuthenticationManager();
     }
 }

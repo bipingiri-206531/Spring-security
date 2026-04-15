@@ -12,7 +12,7 @@
 //import org.springframework.stereotype.Service;
 //
 //@Service
-//public class CustomAuthenticationProvider implements AuthenticationProvider {
+//public class CustomAuthenticationProvider  implements AuthenticationProvider {
 //
 //    @Autowired
 //    private CustomUserDetailsService customUserDetailsService;
@@ -22,14 +22,13 @@
 //
 //    @Override
 //    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-//       String username = authentication.getName();
-//       UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
-//       if (passwordEncoder.matches(authentication.getCredentials().toString(),userDetails.getPassword())) {
-//           return new UsernamePasswordAuthenticationToken(userDetails.getUsername(),userDetails.getPassword(),userDetails.getAuthorities());
-//       }
-//        throw new BadCredentialsException("Invalid username of password");
-//    }
-//
+//        String username = authentication.getName();
+//        UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+//        if (passwordEncoder.matches(authentication.getCredentials().toString(), userDetails.getPassword())) {
+//            return new UsernamePasswordAuthenticationToken(userDetails.getUsername(), userDetails.getPassword(), userDetails.getAuthorities());
+//        }
+//        throw new BadCredentialsException("Invalid username or password");
+//}
 //    @Override
 //    public boolean supports(Class<?> authentication) {
 //        return true;
